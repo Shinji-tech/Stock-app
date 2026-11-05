@@ -1,7 +1,8 @@
 'use client'
 import InputField from "@/components/forms/InputField";
+import SelectField from "@/components/forms/SelectField";
 import { Button } from "@/components/ui/button";
-import { PREFERRED_INDUSTRIES } from "@/lib/constants";
+import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
 import { useForm, SubmitHandler } from "react-hook-form"
 
 const SignUp = () => {
@@ -63,6 +64,36 @@ const SignUp = () => {
                     register={register}
                     error={errors.password}
                     validation={{ required: 'Password is required', minLength: 8 }}
+                />
+
+                {/* Country */}
+
+                <SelectField
+                    name="investmentGoals"
+                    label="Investment Goals"
+                    placeholder="Select your investment goal"
+                    options={INVESTMENT_GOALS}
+                    control={control}
+                    error={errors.investmentGoals}
+                    required
+                />
+                <SelectField
+                    name="riskTolerance"
+                    label="Risk Tolerance"
+                    placeholder="Select your risk level"
+                    options={RISK_TOLERANCE_OPTIONS}
+                    control={control}
+                    error={errors.riskTolerance}
+                    required
+                />
+                <SelectField
+                    name="preferredIndustry"
+                    label="Preferred Industry"
+                    placeholder="Select your preferred industry"
+                    options={PREFERRED_INDUSTRIES}
+                    control={control}
+                    error={errors.preferredIndustry}
+                    required
                 />
 
                 <Button type="submit" className="yellow-btn w-full mt-5" disabled={isSubmitting}>
